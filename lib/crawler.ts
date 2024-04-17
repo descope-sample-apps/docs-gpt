@@ -13,7 +13,7 @@ class Crawler {
     private visited = new Set<string>();
     private documents: Document[] = [];
     private queue: string[] = [];
-    private totalSize = 0; // Property to track the total size of all pages
+    private totalSize = 0;
 
     constructor(baseURL: string) {
         this.baseURL = baseURL;
