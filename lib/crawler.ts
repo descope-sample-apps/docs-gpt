@@ -1,5 +1,3 @@
-'use server'
-
 import cheerio from 'cheerio';
 import { URL } from 'url';
 
@@ -15,6 +13,7 @@ class Crawler {
     private visited = new Set<string>();
     private documents: Document[] = [];
     private queue: string[] = [];
+    private totalSize = 0; // Property to track the total size of all pages
 
     constructor(baseURL: string) {
         this.baseURL = baseURL;
@@ -33,6 +32,7 @@ class Crawler {
                 const response = await fetch(url);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const html = await response.text();
+                this.totalSize += new Blob([html]).size; // Update total size with the size of the response text
                 const $ = cheerio.load(html);
                 const content = $('body').text();
                 console.log('Crawling:', url);
@@ -60,7 +60,7 @@ class Crawler {
 
     async start(): Promise<Document[]> {
         await this.crawl();
-        console.log('Completed crawling all documents.');
+        console.log(`Completed crawling all documents. Total size: ${this.totalSize} bytes.`);
         return this.documents;
     }
 }
