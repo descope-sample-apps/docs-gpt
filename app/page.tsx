@@ -1,4 +1,4 @@
-import ScraperInput from "@/components/scraper/ScraperInput";
+import CrawlerInput from "@/components/crawler/CrawlerInput";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <div className="z-10 w-full max-w-xl px-5 xl:px-0">
-        <ScraperInput />
+        <CrawlerInput />
         <h1
           className="bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"
         >
