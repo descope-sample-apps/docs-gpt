@@ -33,14 +33,14 @@ export default function Chat() {
   console.log(messages)
 
   return (
-    <div className="w-full max-w-xl py-24 mx-auto stretch text-center">
+    <div className="w-full max-w-xl py-24 mx-auto stretch">
       {messages.length === 0 && (
-        <div className="font-medium text-xl m-auto">How can I help you today?</div>
+        <div className="font-medium text-xl m-auto text-center w-full">How can I help you today?</div>
       )}
       {messages.map((m: Message) => (
         <div
           key={m.id}
-          className="whitespace-pre-wrap flex flex-row"
+          className="whitespace-pre-wrap"
         >
           <strong
             style={{ color: roleToColorMap[m.role] }}
