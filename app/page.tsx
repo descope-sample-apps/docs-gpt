@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -17,7 +19,7 @@ export default function Home() {
         <div
           className="mx-auto flex animate-fade-up items-center justify-center space-x-5"
         >
-          <a href="/auth">
+          <a href="/dashboard">
             <Button className="mt-10">Get started</Button>
           </a>
         </div>
