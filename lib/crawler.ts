@@ -1,22 +1,26 @@
 import cheerio from 'cheerio';
 import { URL } from 'url';
+import * as fs from 'fs';
+import OpenAI from "openai";
+import { v4 as uuidv4 } from 'uuid'; // For generating unique file names
+import { promisify } from 'util';
+import path from 'path';
 
-interface Document {
-    title: string;
-    url: string;
-    content: string;
-}
+const openai = new OpenAI();
+const writeFileAsync = promisify(fs.writeFile);
+const unlinkAsync = promisify(fs.unlink);
 
 class Crawler {
     private baseURL: string;
     private baseHost: string;
     private visited = new Set<string>();
-    private documents: Document[] = [];
     private queue: string[] = [];
-    private totalSize = 0;
+    private vectorStoreId: string;
+    private tempDirectory: string = './temp'; // Ensure this directory exists
 
-    constructor(baseURL: string) {
+    constructor(baseURL: string, vectorStoreId: string) {
         this.baseURL = baseURL;
+        this.vectorStoreId = vectorStoreId;
         const parsedUrl = new URL(baseURL);
         this.baseHost = parsedUrl.host;
         this.queue.push(baseURL); // Initialize queue with the base URL
@@ -32,15 +36,28 @@ class Crawler {
                 const response = await fetch(url);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const html = await response.text();
-                this.totalSize += new Blob([html]).size; // Update total size with the size of the response text
                 const $ = cheerio.load(html);
                 const content = $('body').text();
                 console.log('Crawling:', url);
-                this.documents.push({
-                    title: $('title').text(),
-                    url: url,
-                    content: content
+
+                // Save content to a temporary file
+                const safefilename = this.createSafeFilename(url) + '.txt'; // Use url as filename
+                // const filename = uuidv4() + '.txt'; // use random value as filename
+                const filename = safefilename;
+                const filepath = path.join(this.tempDirectory, filename);
+                console.log(filepath)
+                await writeFileAsync(filepath, content);
+
+                console.log("Content saved...")
+
+                // Upload the file
+                const fileStream = fs.createReadStream(filepath);
+                await openai.beta.vectorStores.fileBatches.uploadAndPoll(this.vectorStoreId, {
+                    files: [fileStream]
                 });
+
+                // Clean up the file after upload
+                await unlinkAsync(filepath);
 
                 $('a').each((_, element) => {
                     const href = $(element).attr('href');
@@ -58,11 +75,19 @@ class Crawler {
         }
     }
 
-    async start(): Promise<Document[]> {
+    createSafeFilename(url: string): string {
+        // Remove 'https://' or 'http://' from the start of the URL
+        const strippedUrl = url.replace(/^https?:\/\//, '');
+    
+        // Replace non-alphanumeric characters with underscores
+        return strippedUrl.replace(/[^a-zA-Z0-9]/g, '_');
+    }
+
+    async start(): Promise<void> {
+        console.log('Starting the crawling process...');
         await this.crawl();
-        console.log(`Completed crawling all documents. Total size: ${this.totalSize} bytes.`);
-        return this.documents;
+        console.log('Crawling has completed.');
     }
 }
 
-export default Crawler;
+export default Crawler
