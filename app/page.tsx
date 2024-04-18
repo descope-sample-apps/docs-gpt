@@ -1,14 +1,4 @@
-import CrawlerInput from "@/components/crawler/CrawlerInput";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import Chat from "./assistant";
 
 export default function Home() {
   return (
@@ -20,21 +10,18 @@ export default function Home() {
           AI Docs Chat
         </h1>
         <p
-          className="mt-6 mb-4 text-center text-gray-500 [text-wrap:balance] md:text-xl"
+          className="mt-6 text-center text-gray-500 [text-wrap:balance] md:text-xl"
         >
           Leverage OpenAI&apos;s Assistants API with Streaming and File Search to implement custom search for your docs site.
         </p>
-        {/* <div
-          className="mx-auto mt-6 flex animate-fade-up items-center justify-center space-x-5"
+        <div
+          className="mx-auto flex animate-fade-up items-center justify-center space-x-5"
         >
           <a href="/auth">
             <Button className="mt-10">Get started</Button>
           </a>
-        </div> */}
-        <CrawlerInput />
+        </div>
       </div>
-      
-      <Chat/>
     </>
   );
 }
