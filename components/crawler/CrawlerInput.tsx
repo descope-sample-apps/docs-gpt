@@ -23,8 +23,8 @@ export default function CrawlerInput() {
     return (
         <form onSubmit={handleSubmit}>
             <div className="flex w-full items-center space-x-2">
-                <Input type="url" placeholder="URL" value={url} onChange={(e) => setUrl(e.target.value)} />
-                <Button type="submit">Submit</Button>
+                <Input type="url" placeholder="Enter the url of your documentation site (eg. https://docs.descope.com)" value={url} onChange={(e) => setUrl(e.target.value)} />
+                <Button type="submit">Upload to Vector Store</Button>
             </div>
         </form>
     );
