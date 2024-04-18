@@ -2,7 +2,6 @@ import cheerio from 'cheerio';
 import { URL } from 'url';
 import * as fs from 'fs';
 import OpenAI from "openai";
-import { v4 as uuidv4 } from 'uuid'; // For generating unique file names
 import { promisify } from 'util';
 import path from 'path';
 
@@ -17,6 +16,8 @@ class Crawler {
     private queue: string[] = [];
     private vectorStoreId: string;
     private tempDirectory: string = './temp'; // Ensure this directory exists
+    private fileBatch: string[] = []; // Store file paths for batch upload
+    private batchLimit: number = 50; // Number of files per batch upload
 
     constructor(baseURL: string, vectorStoreId: string) {
         this.baseURL = baseURL;
@@ -41,23 +42,15 @@ class Crawler {
                 console.log('Crawling:', url);
 
                 // Save content to a temporary file
-                const safefilename = this.createSafeFilename(url) + '.txt'; // Use url as filename
-                // const filename = uuidv4() + '.txt'; // use random value as filename
-                const filename = safefilename;
-                const filepath = path.join(this.tempDirectory, filename);
+                const safefilename = this.createSafeFilename(url) + '.txt'; 
+                const filepath = path.join(this.tempDirectory, safefilename);
                 console.log(filepath)
                 await writeFileAsync(filepath, content);
+                this.fileBatch.push(filepath);
 
-                console.log("Content saved...")
-
-                // Upload the file
-                const fileStream = fs.createReadStream(filepath);
-                await openai.beta.vectorStores.fileBatches.uploadAndPoll(this.vectorStoreId, {
-                    files: [fileStream]
-                });
-
-                // Clean up the file after upload
-                await unlinkAsync(filepath);
+                if (this.fileBatch.length >= this.batchLimit) {
+                    await this.uploadFiles(); // Upload when batch limit is reached
+                }
 
                 $('a').each((_, element) => {
                     const href = $(element).attr('href');
@@ -73,13 +66,25 @@ class Crawler {
                 console.error(`Failed to fetch ${url}:`, error);
             }
         }
+        if (this.fileBatch.length > 0) {
+            await this.uploadFiles(); // Upload any remaining files after crawling
+        }
+    }
+
+    async uploadFiles(): Promise<void> {
+        console.log("Uploading batch...");
+        const fileStreams = this.fileBatch.map(file => fs.createReadStream(file));
+        await openai.beta.vectorStores.fileBatches.uploadAndPoll(this.vectorStoreId, {
+            files: fileStreams
+        });
+
+        // Clean up files after upload
+        await Promise.all(this.fileBatch.map(file => unlinkAsync(file)));
+        this.fileBatch = []; // Clear the batch array
     }
 
     createSafeFilename(url: string): string {
-        // Remove 'https://' or 'http://' from the start of the URL
         const strippedUrl = url.replace(/^https?:\/\//, '');
-    
-        // Replace non-alphanumeric characters with underscores
         return strippedUrl.replace(/[^a-zA-Z0-9]/g, '_');
     }
 
