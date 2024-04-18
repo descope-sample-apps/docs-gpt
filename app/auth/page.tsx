@@ -1,4 +1,3 @@
-'use client'
 
 import { Descope } from '@descope/nextjs-sdk';
 const Page = () => {
@@ -6,12 +5,7 @@ const Page = () => {
         <div className="flex flex-col items-center p-24 rounded-md">
             <Descope
                 flowId="sign-up-or-in"
-                onSuccess={(e) => {
-                    console.log('Logged in!')
-                    window.location.href = "/"
-                }}
-                onError={(e) => console.log('Could not logged in!')}
-                // redirectAfterSuccess="/"
+                redirectAfterSuccess="/dasboard"
                 // redirectAfterError="/error-page"
             />
         </div>
