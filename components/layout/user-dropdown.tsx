@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import { useCallback, useState } from "react";
@@ -16,6 +17,7 @@ import {
 } from "@/components/ui/popover"
 import { AuthenticationInfo } from "@descope/node-sdk";
 import { useDescope, useUser } from "@descope/nextjs-sdk/client";
+import Link from "next/link";
 export default function UserDropdown({ sessionToken }: { sessionToken: string }) {
   // const { email, image } = session?.token || {};
   const [openPopover, setOpenPopover] = useState(false);
@@ -62,13 +64,13 @@ export default function UserDropdown({ sessionToken }: { sessionToken: string })
                 {email}
               </p>
             </div>
-            <button
-              className="relative flex w-full cursor-not-allowed items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
-              disabled
+            <Link
+              href={"/dashboard"}
+              className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
             >
               <LayoutDashboard className="h-4 w-4" />
               <p className="text-sm">Dashboard</p>
-            </button>
+            </Link>
             <button
               className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
               onClick={() => handleLogout()}
