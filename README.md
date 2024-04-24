@@ -1,6 +1,6 @@
 ![Redme Logo](https://github.com/descope-sample-apps/nextjs-demo-app-router/assets/46854522/6f95c078-c944-4b72-bced-92742fbf7ff3)
 
-# Welcome to the ChatGPT for your Docs Sample App
+# Welcome to the DocsGPT: ChatGPT for your Docs
 This is a sample consumer app built by Descope to showcase the Descope Flows functionality with NextJS.
 
 
@@ -8,7 +8,7 @@ This is a sample consumer app built by Descope to showcase the Descope Flows fun
 
 You can deploy this template to Vercel with the button below:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdescope-sample-apps%2Fnextjs-demo-app-router&env=NEXT_PUBLIC_DESCOPE_PROJECT_ID)
+[![Deploy with Vercel](https://vercel.com/button)]([![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdescope-sample-apps%2Fdocs-gpt&env=DESCOPE_PROJECT_ID,OPENAI_ASSISTANT_ID,OPENAI_API_KEY))
 
 
 ## Technology Stack and Capabilities
@@ -74,3 +74,6 @@ npm run dev
 #### 5. Open the app
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+#### 6. Crawl Documentation
+Log in to DocsGPT. Then, add the `admin` role to your user in the Descope console. This involves creating the role [here](https://app.descope.com/authorization)
+and then adding it to your user [here](https://app.descope.com/users). Finally, click the profile widget in the top right of DocsGPT and click the Crawl Docs button. 
