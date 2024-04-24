@@ -51,7 +51,7 @@ export default function CrawlerInput() {
         </form>
         )}
         {done && <p>Crawler done! Make sure your assistant id has the vector store attached and head over to <Link href="/dashboard" className="underline">chat with your bot</Link>.</p>}
-        <p className="mt-4 text-gray-500 md:text-sm">Uploads can take 10-20 minutes depending on documentation site size. You can track progress in your server logs.</p>
+        <p className="mt-4 text-gray-500 md:text-sm">Uploads can take 10-20 minutes depending on documentation site size. You can track progress in your server logs and OpenAI dashboard.</p>
         </>
     );
 }
