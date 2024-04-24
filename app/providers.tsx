@@ -4,7 +4,7 @@ import { AuthProvider } from "@descope/nextjs-sdk";
 
 const Providers: React.FC<{ children: JSX.Element | undefined }> = ({ children }) => {
   if (process.env.DESCOPE_PROJECT_ID === undefined) {
-    throw new Error("NEXT_PUBLIC_DESCOPE_PROJECT_ID is not defined");
+    throw new Error("DESCOPE_PROJECT_ID is not defined");
   }
   
   return (
