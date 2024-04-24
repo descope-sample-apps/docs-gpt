@@ -26,9 +26,10 @@ export default function UserDropdown({ sessionToken }: { sessionToken: string })
 
   const { isUserLoading, user } = useUser();
 
-  const handleLogout = () => {
-    sdk.logout();
+  const handleLogout = async () => {
+    await sdk.logout();
     window.location.reload();
+    window.location.href = "/";
   }
   
   if (isUserLoading) return null;
