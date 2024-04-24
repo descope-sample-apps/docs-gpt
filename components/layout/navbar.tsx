@@ -30,7 +30,7 @@ export default function NavBar() {
               height="30"
               className="mr-2 rounded-sm"
             ></Image> */}
-            <p>Descope</p>
+            <p>DocsGPT</p>
           </Link>
           {isSessionLoading ? null : (
             <div>
