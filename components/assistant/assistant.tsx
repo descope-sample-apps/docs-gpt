@@ -2,7 +2,7 @@
 
 import { Message, useAssistant } from 'ai/react';
 import { MoveUp } from 'lucide-react';
-import { FormEvent, FormEventHandler, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Markdown from 'react-markdown'
 
 const roleToColorMap: Record<Message['role'], string> = {
@@ -14,42 +14,15 @@ const roleToColorMap: Record<Message['role'], string> = {
   tool: 'purple'
 };
 
-const exampleMessages: Message[] = [
-  {
-    id: '1',
-    role: 'user',
-    content: 'Hello!'
-  },
-  {
-    id: '2',
-    role: 'assistant',
-    content: 'Hi, how can I help you?'
-  }
-]
 
 export default function Chat() {
-  const [previousMessages, setPreviousMessages] = useState<Message[]>(exampleMessages);
-  const threadId = 'thread_tc7F2yPWePoj3cT1ArTPH9oX';
   const { status, messages, input, submitMessage, handleInputChange } =
-    useAssistant({ api: '/api/assistant', threadId });
-  // console.log(messages)
-
-  const getMessages = async () => {
-    const res = await fetch(`/api/threads/${threadId}/messages`)
-    const data = await res.json()
-    console.log(data)
-  }
-  useEffect(() => {
-    console.log(messages)
-    if (threadId) {
-      getMessages()
-    }
-  }, [messages]);
+    useAssistant({ api: '/api/assistant' });
 
   return (
     <div className="w-full max-w-xl py-24 mx-auto stretch">
       {messages.length === 0 && (
-        <div className="font-medium text-xl m-auto text-center w-full">How can I help you today?</div>
+        <div className="font-medium text-xl m-auto text-center w-full">Hey, it&apos;s Descope Assistant. How can I help you today?</div>
       )}
       {messages.map((m: Message) => (
         <div
