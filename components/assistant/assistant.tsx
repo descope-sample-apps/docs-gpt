@@ -2,7 +2,7 @@
 
 import { Message, useAssistant } from 'ai/react';
 import { MoveUp } from 'lucide-react';
-import { FormEvent, FormEventHandler, useState } from 'react';
+import { FormEvent, FormEventHandler, useEffect, useState } from 'react';
 import Markdown from 'react-markdown'
 
 const roleToColorMap: Record<Message['role'], string> = {
@@ -28,9 +28,23 @@ const exampleMessages: Message[] = [
 ]
 
 export default function Chat() {
+  const [previousMessages, setPreviousMessages] = useState<Message[]>(exampleMessages);
+  const threadId = 'thread_tc7F2yPWePoj3cT1ArTPH9oX';
   const { status, messages, input, submitMessage, handleInputChange } =
-    useAssistant({ api: '/api/assistant' });
-  console.log(messages)
+    useAssistant({ api: '/api/assistant', threadId });
+  // console.log(messages)
+
+  const getMessages = async () => {
+    const res = await fetch(`/api/threads/${threadId}/messages`)
+    const data = await res.json()
+    console.log(data)
+  }
+  useEffect(() => {
+    console.log(messages)
+    if (threadId) {
+      getMessages()
+    }
+  }, [messages]);
 
   return (
     <div className="w-full max-w-xl py-24 mx-auto stretch">
