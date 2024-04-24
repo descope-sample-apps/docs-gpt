@@ -43,12 +43,12 @@ export default function CrawlerInput() {
         <>
         {!done && (
             <form onSubmit={handleSubmit}>
-            <div className="flex w-full items-center space-x-2">
-                <Input name="url" type="url" placeholder="Documentation site URL (eg. https://docs.descope.com)" />
-                <Input name="vectorStoreId" type="text" placeholder="Vector store ID" />
-                <Button disabled={isLoading} type="submit">{isLoading ? 'Uploading...' : 'Upload'}</Button>
-            </div>
-        </form>
+                <div className="flex w-full items-center space-x-2">
+                    <Input disabled={isLoading} name="url" type="url" placeholder="Documentation site URL (eg. https://docs.descope.com)" />
+                    <Input disabled={isLoading} name="vectorStoreId" type="text" placeholder="Vector store ID" />
+                    <Button disabled={isLoading} type="submit">{isLoading ? 'Uploading...' : 'Upload'}</Button>
+                </div>
+            </form>
         )}
         {done && <p>Crawler done! Make sure your assistant id has the vector store attached and head over to <Link href="/dashboard" className="underline">chat with your bot</Link>.</p>}
         <p className="mt-4 text-gray-500 md:text-sm">Uploads can take 10-20 minutes depending on documentation site size. You can track progress in your server logs and OpenAI dashboard.</p>
