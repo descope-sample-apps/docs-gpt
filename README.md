@@ -1,7 +1,7 @@
 ![Redme Logo](https://github.com/descope-sample-apps/nextjs-demo-app-router/assets/46854522/6f95c078-c944-4b72-bced-92742fbf7ff3)
 
-# Welcome to the Descope and NextJS App Router Template: Building Blocks Included
-This is a sample consumer app built by Descope to showcase the Descope Flows functionality with NextJS. It also includes useful hooks, utilities, and components to get started.
+# Welcome to the ChatGPT for your Docs Sample App
+This is a sample consumer app built by Descope to showcase the Descope Flows functionality with NextJS.
 
 
 ## One-click Deploy
@@ -25,10 +25,8 @@ You can deploy this template to Vercel with the button below:
 ### User Interface (UI)
 
 - [Tailwind CSS](https://tailwindcss.com/): A utility-first CSS framework that accelerates the process of UI development.
-- [Radix](https://www.radix-ui.com/): Offers foundational components like modals and popovers for enhancing user interfaces.
 - [Lucide](https://lucide.dev/): Offers a collection of simple and precise icons for web projects.
 - [`next/font`](https://nextjs.org/docs/basic-features/font-optimization): Enables custom font optimization, eliminating the need for external network requests, thereby boosting performance.
-- [`ImageResponse`](https://nextjs.org/docs/app/api-reference/functions/image-response): Allows for the dynamic generation of Open Graph images at the edge for improved sharing capabilities.
 
 ### React Hooks and Utility Functions
 
@@ -43,9 +41,7 @@ You can deploy this template to Vercel with the button below:
 ### Ensuring Code Quality
 
 - [TypeScript](https://www.typescriptlang.org/): A static type-checking tool offering end-to-end type safety for robust development.
-- [Prettier](https://prettier.io/): An opinionated code formatter that standardizes code style across projects.
-- [ESLint](https://eslint.org/): A configurable linter tool tailored for Next.js and TypeScript projects, ensuring code quality and consistency.
-- 
+
 ## Set up
 In order to launch this app:
 
@@ -54,9 +50,11 @@ In order to launch this app:
 git clone git@github.com:descope-sample-apps/nextjs-demo-app-router.git
 ```
 
-#### 2. Set up Descope environment variables in `.env` file
+#### 2. Set up environment variables in `.env` file
 ```
-NEXT_PUBLIC_DESCOPE_PROJECT_ID="YOUR PROJECT ID" // Required for Descope authentication
+DESCOPE_PROJECT_ID="YOUR PROJECT ID" // Required for Descope authentication
+OPENAI_ASSISTANT_ID="YOUR OPENAI ASSISTANT ID" // With vector store attached
+OPENAI_API_KEY="YOUR OPENAI API KEY"
 ```
 _You can get your project-id [here](https://app.descope.com/settings/project)_.
 

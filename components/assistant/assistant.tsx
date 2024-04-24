@@ -2,7 +2,7 @@
 
 import { Message, useAssistant } from 'ai/react';
 import { MoveUp } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Markdown from 'react-markdown'
 
 const roleToColorMap: Record<Message['role'], string> = {
@@ -13,7 +13,6 @@ const roleToColorMap: Record<Message['role'], string> = {
   data: 'orange',
   tool: 'purple'
 };
-
 
 export default function Chat() {
   const { status, messages, input, submitMessage, handleInputChange } =
