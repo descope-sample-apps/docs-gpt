@@ -17,7 +17,7 @@ class Crawler {
     private vectorStoreId: string;
     private tempDirectory: string = './temp'; // Ensure this directory exists
     private fileBatch: string[] = []; // Store file paths for batch upload
-    private batchLimit: number = 50; // Number of files per batch upload
+    private batchLimit: number = 500; // Number of files per batch upload
 
     constructor(baseURL: string, vectorStoreId: string) {
         this.baseURL = baseURL;

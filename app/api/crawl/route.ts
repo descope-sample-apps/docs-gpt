@@ -1,6 +1,21 @@
 import Crawler from '@/lib/crawler';
+import { session } from '@descope/nextjs-sdk/server';
 
 export async function POST(request: Request) {
+    const currSession = session();
+    if (!currSession) {
+        return new Response(`Not logged in`, {
+            status: 500,
+        })
+    }
+    const { token } = currSession;
+    const roles = token.roles as string[];
+    if (!roles.includes('admin')) {
+        return new Response(`Not authorized`, {
+            status: 500,
+        })
+    }
+    // console.log()
     const res = await request.json();
     const url = res.url;
     const vectorStoreId = res.vectorStoreId;
