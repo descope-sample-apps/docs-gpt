@@ -6,6 +6,7 @@ import { Input } from "../ui/input";
 
 export default function CrawlerInput() {
     const [isLoading, setIsLoading] = useState(false);
+    const [done, setDone] = useState(false);
     
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -34,18 +35,22 @@ export default function CrawlerInput() {
         console.log(data);
 
         setIsLoading(false);
-        alert('Crawl done!');
+
+        setDone(true);
     };
 
     return (
         <>
-        <form onSubmit={handleSubmit}>
+        {!done && (
+            <form onSubmit={handleSubmit}>
             <div className="flex w-full items-center space-x-2">
                 <Input name="url" type="url" placeholder="Documentation site URL (eg. https://docs.descope.com)" />
                 <Input name="vectorStoreId" type="text" placeholder="Vector store ID" />
                 <Button disabled={isLoading} type="submit">{isLoading ? 'Uploading...' : 'Upload'}</Button>
             </div>
         </form>
+        )}
+        {done && <p>Crawler done!</p>}
         <p className="mt-4 text-gray-500 md:text-sm">Uploads can take 10-20 minutes depending on documentation site size. You can track progress in your server logs.</p>
         </>
     );
