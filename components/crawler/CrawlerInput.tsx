@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import Link from 'next/link';
 
 export default function CrawlerInput() {
     const [isLoading, setIsLoading] = useState(false);
@@ -50,7 +51,7 @@ export default function CrawlerInput() {
             </div>
         </form>
         )}
-        {done && <p>Crawler done!</p>}
+        {done && <p>Crawler done! Make sure your assistant id has the vector store attached and head over to <Link href="/" className="underline">chat with your bot</Link>.</p>}
         <p className="mt-4 text-gray-500 md:text-sm">Uploads can take 10-20 minutes depending on documentation site size. You can track progress in your server logs.</p>
         </>
     );
