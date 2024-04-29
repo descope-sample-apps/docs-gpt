@@ -55,7 +55,11 @@ DESCOPE_PROJECT_ID="YOUR PROJECT ID" // Required for Descope authentication
 OPENAI_ASSISTANT_ID="YOUR OPENAI ASSISTANT ID" // With vector store attached
 OPENAI_API_KEY="YOUR OPENAI API KEY"
 ```
-_You can get your project-id [here](https://app.descope.com/settings/project)_.
+_You can get your project-id [here](https://app.descope.com/settings/project)._
+
+_You can create an OpenAI Assistant [here](https://platform.openai.com/assistants) and Vector Store [here](https://platform.openai.com/storage/vector_stores)._
+
+_You can get your OpenAI API Key [here](https://platform.openai.com/api-keys)._
 
 #### 3. Install dependencies 
 ```
@@ -76,3 +80,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 #### 6. Crawl Documentation
 Log in to DocsGPT. Then, add the `admin` role to your user in the Descope console. This involves creating the role [here](https://app.descope.com/authorization)
 and then adding it to your user [here](https://app.descope.com/users). Finally, click the profile widget in the top right of DocsGPT and click the Crawl Docs button. 
+
+
+_Note that your OpenAI Asstant must have an `instruction` that tells it to use File Search. It could be something like this: `You are Descope Assistant, a helpful product support assistant. Use you knowledge base to answer questions about audited financial statements.`
+
