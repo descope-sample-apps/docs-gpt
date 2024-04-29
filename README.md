@@ -12,10 +12,9 @@ You can deploy this template to Vercel with the button below:
 
 ## Technology Stack and Capabilities
 
-### Core Frameworks
+### Core Framework
 
 - [Next.js](https://nextjs.org/): A React framework designed for building high-performance applications with an exceptional developer experience.
-- [Descope](https://descope.com): Use no-code workflows to easily add authentication, authorization, and identity management to any customer-facing app.
 
 ### Deployment Platforms
 
@@ -37,9 +36,10 @@ You can deploy this template to Vercel with the button below:
 - `truncate`: Allows for the shortening of strings to a specific length, useful for creating concise text previews.
 - [`use-debounce`](https://www.npmjs.com/package/use-debounce): Debounces function calls or state updates, helping to optimize performance and reduce unnecessary processing.
 
-### Ensuring Code Quality
-
+### Authentication & Language
 - [TypeScript](https://www.typescriptlang.org/): A static type-checking tool offering end-to-end type safety for robust development.
+- [Descope](https://descope.com): Use no-code workflows to easily add authentication, authorization, and identity management to any customer-facing app.
+
 
 ## Set up
 In order to launch this app:
