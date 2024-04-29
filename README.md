@@ -82,5 +82,5 @@ Log in to DocsGPT. Then, add the `admin` role to your user in the Descope consol
 and then adding it to your user [here](https://app.descope.com/users). Finally, click the profile widget in the top right of DocsGPT and click the Crawl Docs button. 
 
 
-_Note that your OpenAI Asstant must have an `instruction` that tells it to use File Search. It could be something like this: `You are Descope Assistant, a helpful product support assistant. Use you knowledge base to answer questions about audited financial statements.`
+_Note that your OpenAI Asstant must have an `instruction` that tells it to use File Search. It could be something like this: `You are Descope Assistant, a helpful product support assistant. Use you knowledge base to answer questions about audited financial statements.`_
 
