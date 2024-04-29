@@ -1,4 +1,4 @@
-![Redme Logo](https://github.com/descope-sample-apps/nextjs-demo-app-router/assets/46854522/6f95c078-c944-4b72-bced-92742fbf7ff3)
+![Redme Logo](https://github.com/descope-sample-apps/docs-gpt/assets/46854522/d242e04d-d7a7-453f-beb6-6d9a98781435)
 
 # Welcome to the DocsGPT: ChatGPT for your Docs
 This is a sample consumer app built by Descope to showcase the Descope Flows functionality with NextJS.
