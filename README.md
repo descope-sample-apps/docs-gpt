@@ -8,8 +8,7 @@ This is a sample consumer app built by Descope to showcase the Descope Flows fun
 
 You can deploy this template to Vercel with the button below:
 
-[![Deploy with Vercel](https://vercel.com/button)]([![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdescope-sample-apps%2Fdocs-gpt&env=DESCOPE_PROJECT_ID,OPENAI_ASSISTANT_ID,OPENAI_API_KEY))
-
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdescope-sample-apps%2Fdocs-gpt&env=DESCOPE_PROJECT_ID,OPENAI_ASSISTANT_ID,OPENAI_API_KEY)
 
 ## Technology Stack and Capabilities
 
