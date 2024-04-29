@@ -1,4 +1,4 @@
-![Redme Logo](https://github.com/descope-sample-apps/nextjs-demo-app-router/assets/46854522/6f95c078-c944-4b72-bced-92742fbf7ff3)
+![Redme Logo](https://github.com/descope-sample-apps/docs-gpt/assets/46854522/d242e04d-d7a7-453f-beb6-6d9a98781435)
 
 # Welcome to the DocsGPT: ChatGPT for your Docs
 This is a sample consumer app built by Descope to showcase the Descope Flows functionality with NextJS.
@@ -8,8 +8,7 @@ This is a sample consumer app built by Descope to showcase the Descope Flows fun
 
 You can deploy this template to Vercel with the button below:
 
-[![Deploy with Vercel](https://vercel.com/button)]([![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdescope-sample-apps%2Fdocs-gpt&env=DESCOPE_PROJECT_ID,OPENAI_ASSISTANT_ID,OPENAI_API_KEY))
-
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdescope-sample-apps%2Fdocs-gpt&env=DESCOPE_PROJECT_ID,OPENAI_ASSISTANT_ID,OPENAI_API_KEY)
 
 ## Technology Stack and Capabilities
 
