@@ -33,18 +33,17 @@ export default function Chat() {
           >{`${m.role}: `}</strong>
           {m.role !== 'data' &&
             <Markdown>
-              {m.content}
+               {m.content.replace(/\【\d+:.\†source\】/g, '')}
             </Markdown>}
-          {m.role === 'data' && (
+          {/* {m.role === 'data' && (
             <>
-              {/* here you would provide a custom display for your app-specific data:*/}
               {(m.data as any).description}
               <br />
               <pre className={'bg-gray-200'}>
                 {JSON.stringify(m.data, null, 2)}
               </pre>
             </>
-          )}
+          )} */}
           <br />
         </div>
       ))}

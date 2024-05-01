@@ -31,6 +31,7 @@ export async function POST(req: Request) {
             throw new Error('ASSISTANT_ID is not set');
           })(),
       });
+
  
       // forward run status would stream message deltas
       await forwardStream(runStream);
