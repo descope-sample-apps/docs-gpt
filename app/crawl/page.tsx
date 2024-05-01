@@ -5,9 +5,11 @@ import CrawlerInput from "@/components/crawler/CrawlerInput";
 import { useSession, useUser } from "@descope/nextjs-sdk/client";
 
 export default function Home() {
-    const { user, isUserLoading } = useUser();
     const { isSessionLoading, sessionToken, isAuthenticated } = useSession();
+    
+    const { user, isUserLoading } = useUser();
     const isUserAdmin = user?.roleNames?.includes("admin");
+    
     if (isSessionLoading || isUserLoading) {
         return <div>...</div>;
     }
