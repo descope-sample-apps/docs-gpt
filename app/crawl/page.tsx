@@ -1,6 +1,5 @@
 'use client'
 
-import Chat from "@/components/assistant/assistant";
 import CrawlerInput from "@/components/crawler/CrawlerInput";
 import { useSession, useUser } from "@descope/nextjs-sdk/client";
 
