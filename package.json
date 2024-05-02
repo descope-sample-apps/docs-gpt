@@ -14,7 +14,6 @@
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-popover": "^1.0.7",
     "@radix-ui/react-slot": "^1.0.2",
-    "ai": "^3.0.23",
     "cheerio": "^1.0.0-rc.12",
     "class-variance-authority": "^0.7.0",
     "classnames": "^2.5.1",
