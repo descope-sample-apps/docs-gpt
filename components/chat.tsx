@@ -248,7 +248,7 @@ const Chat = ({
         <div
           className={cn(styles.messages)}
         >
-          {messages.length === 0 && <div className="font-medium text-xl m-auto text-left w-full">Hey, it&apos;s Descope Assistant. How can I help you today?</div>}
+          {messages.length === 0 && <div className="font-medium text-xl m-auto text-left w-full">Hey! Ask me about anything Descope.</div>}
 
           {messages.map((msg, index) => (
             <Message key={index} role={msg.role} text={msg.text} />
