@@ -121,18 +121,22 @@ const Chat = ({
     handleReadableStream(stream);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!userInput.trim()) return;
+  const handleSend = async (text) => {
     setIsLoading(true);
-    sendMessage(userInput);
+    sendMessage(text);
     setMessages((prevMessages) => [
       ...prevMessages,
-      { role: "user", text: userInput },
+      { role: "user", text },
     ]);
     setUserInput("");
     setInputDisabled(true);
     scrollToBottom();
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!userInput.trim()) return;
+    handleSend(userInput);
   };
 
   /* Stream Event Handlers */
@@ -239,95 +243,61 @@ const Chat = ({
   };
 
   return (
-      <div className={cn("max-w-xl max-h-screen overflow-y-hidden flex flex-col")}>
-        <div className={cn("overflow-y-auto col-start-1 row-start-1 ")}>
-          <div
-            className={cn(styles.messages)}
-          >
-            {messages.length === 0 && <div className="font-medium text-xl m-auto text-left w-full">Hey, it&apos;s Descope Assistant. How can I help you today?</div>}
-  
-            {messages.map((msg, index) => (
-              <Message key={index} role={msg.role} text={msg.text} />
-            ))}
-  
-            {isLoading && <div className="h-8 w-full mt-2 p-2 mb-8 text-left max-w-md bg-gray-300 dark:bg-gray-600 rounded-lg animate-pulse" />}
-          </div>
-        </div>
-        <div className="col-start-1 row-start-1 bg-transparent pb-2">
-          <form onSubmit={handleSubmit} className="flex">
-            <input
-              type="text"
-              className={styles.input}
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              placeholder="Enter your question"
-            />
-            <button
-              type="submit"
-              className={styles.button}
-              disabled={inputDisabled}
-            >
-              Send
-            </button>
-          </form>
+    <div className={cn("max-w-xl max-h-screen overflow-y-hidden flex flex-col")}>
+      <div className={cn("overflow-y-auto col-start-1 row-start-1 ")}>
+        <div
+          className={cn(styles.messages)}
+        >
+          {messages.length === 0 && <div className="font-medium text-xl m-auto text-left w-full">Hey, it&apos;s Descope Assistant. How can I help you today?</div>}
+
+          {messages.map((msg, index) => (
+            <Message key={index} role={msg.role} text={msg.text} />
+          ))}
+
+          {isLoading && <div className="h-8 w-full mt-2 p-2 mb-8 text-left max-w-md bg-gray-300 dark:bg-gray-600 rounded-lg animate-pulse" />}
         </div>
       </div>
+      <div className="col-start-1 row-start-1 bg-transparent pb-2">
+        <form onSubmit={handleSubmit} className="flex">
+          <input
+            type="text"
+            className={styles.input}
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
+            placeholder="Enter your question"
+          />
+          <button
+            type="submit"
+            className={styles.button}
+            disabled={inputDisabled}
+          >
+            Send
+          </button>
+        </form>
+      </div>
+      {messages.length === 0 && <div className="grid grid-cols-2 gap-2">
+        {starters.map((starter, index) => (
+          <Starter key={index} handleSend={handleSend} starter={starter} />
+        ))}
+      </div>}
+    </div>
   );
-  
+
 };
 
 export default Chat;
 
-
-
-const sampleMessages = [
-  { role: "user", text: "Hello!" },
-  { role: "assistant", text: "Hi there!" },
-  { role: "user", text: "How are you?" },
-  { role: "assistant", text: "I'm doing well. Thanks for asking!" },
-  { role: "user", text: "What's your name?" },
-  { role: "assistant", text: "My name is Descope. Nice to meet you!" },
-  { role: "user", text: "What's your favorite color?" },
-  { role: "assistant", text: "I don't have a favorite color. I'm a bot!" },
-  { role: "assistant", text: "Hi there!" },
-  { role: "user", text: "How are you?" },
-  { role: "assistant", text: "I'm doing well. Thanks for asking!" },
-  { role: "user", text: "What's your name?" },
-  { role: "assistant", text: "My name is Descope. Nice to meet you!" },
-  { role: "user", text: "What's your favorite color?" },
-  { role: "assistant", text: "I don't have a favorite color. I'm a bot!" },
-  { role: "assistant", text: "Hi there!" },
-  { role: "user", text: "How are you?" },
-  { role: "assistant", text: "I'm doing well. Thanks for asking!" },
-  { role: "user", text: "What's your name?" },
-  { role: "assistant", text: "My name is Descope. Nice to meet you!" },
-  { role: "user", text: "What's your favorite color?" },
-  { role: "assistant", text: "I don't have a favorite color. I'm a bot!" },
-  { role: "assistant", text: "Hi there!" },
-  { role: "user", text: "How are you?" },
-  { role: "assistant", text: "I'm doing well. Thanks for asking!" },
-  { role: "user", text: "What's your name?" },
-  { role: "assistant", text: "My name is Descope. Nice to meet you!" },
-  { role: "user", text: "What's your favorite color?" },
-  { role: "assistant", text: "I don't have a favorite color. I'm a bot!" },
-  { role: "assistant", text: "Hi there!" },
-  { role: "user", text: "How are you?" },
-  { role: "assistant", text: "I'm doing well. Thanks for asking!" },
-  { role: "user", text: "What's your name?" },
-  { role: "assistant", text: "My name is Descope. Nice to meet you!" },
-  { role: "user", text: "What's your favorite color?" },
-  { role: "assistant", text: "I don't have a favorite color. I'm a bot!" },
-
-  { role: "assistant", text: "I'm doing well. Thanks for asking!" },
-  { role: "user", text: "What's your name?" },
-  { role: "assistant", text: "My name is Descope. Nice to meet you!" },
-  { role: "user", text: "What's your favorite color?" },
-  { role: "assistant", text: "I don't have a favorite color. I'm a bot!" },
-  { role: "assistant", text: "Hi there!" },
-  { role: "user", text: "How are you?" },
-  { role: "assistant", text: "I'm doing well. Thanks for asking!" },
-  { role: "user", text: "What's your name?" },
-  { role: "assistant", text: "My name is Descope. Nice to meet you!" },
-  { role: "user", text: "What's your favorite color?" },
-  { role: "assistant", text: "I don't have a favorite color. I'm a bot!" },
+const starters = [
+  "How can Descope Flows be used to enhance user onboarding through progressive profiling?",
+  "What are the benefits of using passkeys over traditional authentication methods with Descope?",
+  "How does the nOTP feature via WhatsApp improve user authentication and reduce costs?",
+  "What are the practical applications of integrating Descope with Retool for internal apps?"
 ]
+
+function Starter({ starter, handleSend }: { starter: string, handleSend: (text: string) => void }) {
+  return (
+    <button onClick={() => handleSend(starter)} className="bg-gray-100 hover:bg-gray-200 transition rounded-lg p-1 text-xs">
+      <p>{starter}</p>
+    </button>
+  )
+}
