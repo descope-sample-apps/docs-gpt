@@ -4,6 +4,16 @@ import * as fs from 'fs';
 import OpenAI from "openai";
 import { promisify } from 'util';
 import path from 'path';
+import TurndownService from 'turndown';
+import { Readability } from '@mozilla/readability';
+import { JSDOM } from "jsdom"
+
+import FirecrawlApp from "@mendable/firecrawl-js";
+
+const app = new FirecrawlApp({
+  apiKey: process.env.FIRECRAWL_API_KEY!,
+});
+
 
 const openai = new OpenAI();
 const writeFileAsync = promisify(fs.writeFile);
@@ -37,9 +47,18 @@ class Crawler {
                 const response = await fetch(url);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const html = await response.text();
+
                 const $ = cheerio.load(html);
-                const content = $('body').text();
+                let content;
                 console.log('Crawling:', url);
+                var doc = new JSDOM(html, { url });
+                var article = new Readability(doc.window.document).parse();
+                if (article) {
+                    content = article.textContent
+                } else {
+                    const scrapedData = await app.scrapeUrl(url);
+                    content = scrapedData.data.content;
+                }            
 
                 // Save content to a temporary file
                 const safefilename = this.createSafeFilename(url) + '.txt'; 

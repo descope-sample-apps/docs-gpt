@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@descope/nextjs-sdk": "^0.0.5-alpha.1",
+    "@descope/nextjs-sdk": "^0.0.6",
     "@descope/node-sdk": "^1.6.5",
+    "@mendable/firecrawl-js": "^0.0.21",
+    "@mozilla/readability": "^0.5.0",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-popover": "^1.0.7",
     "@radix-ui/react-slot": "^1.0.2",
@@ -18,6 +20,7 @@
     "class-variance-authority": "^0.7.0",
     "classnames": "^2.5.1",
     "clsx": "^2.1.0",
+    "jsdom": "^24.1.0",
     "lucide-react": "^0.359.0",
     "ms": "^2.1.3",
     "next": "14.1.2",
@@ -27,15 +30,18 @@
     "react-markdown": "^9.0.1",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
+    "turndown": "^7.2.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/cheerio": "^0.22.35",
+    "@types/jsdom": "^21.1.7",
     "@types/ms": "^0.7.34",
     "@types/node": "^20.12.7",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/turndown": "^5.0.4",
     "@types/uuid": "^9.0.8",
     "autoprefixer": "^10.4.18",
     "eslint": "^8",

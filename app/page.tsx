@@ -1,11 +1,16 @@
 'use client'
 
+import Chat from "@/components/chat";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
     <>
-      <div className="z-10 w-full max-w-xl px-5 xl:px-0">
+      <div className="z-10 w-full max-w-4xl px-2 xl:px-0">
+        <p className="mt-6 text-center text-gray-500 [text-wrap:balance] md:text-xl"></p>
+        <Chat />
+      </div>
+      {/* <div className="z-10 w-full max-w-xl px-5 xl:px-0">
         <h1
           className="bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"
         >
@@ -23,7 +28,7 @@ export default function Home() {
             <Button className="mt-10">Get started</Button>
           </a>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

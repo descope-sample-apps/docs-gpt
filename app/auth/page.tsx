@@ -1,3 +1,4 @@
+'use client'
 
 import { Descope } from '@descope/nextjs-sdk';
 const Page = () => {
@@ -13,3 +14,4 @@ const Page = () => {
 };
 
 export default Page;
+
