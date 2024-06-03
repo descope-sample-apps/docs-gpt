@@ -6,10 +6,11 @@ import { Button } from "@/components/ui/button";
 export default function Home() {
   return (
     <>
-      <div className="z-10 w-full max-w-4xl px-2 xl:px-0">
-        <p className="mt-6 text-center text-gray-500 [text-wrap:balance] md:text-xl"></p>
-        <Chat />
-      </div>
+    <Chat />
+      {/* <div className="z-10 w-full max-w-4xl px-2 xl:px-0 max-h-screen bg-blue-500 overflow-auto"> */}
+        {/* <p className="mt-6 text-center text-gray-500 [text-wrap:balance] md:text-xl"></p> */}
+        
+      {/* </div> */}
       {/* <div className="z-10 w-full max-w-xl px-5 xl:px-0">
         <h1
           className="bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"

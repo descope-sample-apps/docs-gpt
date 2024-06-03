@@ -160,7 +160,7 @@ const Chat = ({
         index++;
       }
     }
-    
+
     appendToLastMessage(text);
   };
 
@@ -239,38 +239,95 @@ const Chat = ({
   };
 
   return (
-    <div className={styles.chatContainer}>
-      <div className={styles.messages}>
-        {messages.length === 0 && <div className="font-medium text-xl m-auto text-left w-full">Hey, it&apos;s Descope Assistant. How can I help you today?</div>}
-        
-        {messages.map((msg, index) => (
-          <Message key={index} role={msg.role} text={msg.text} />
-        ))}
-
-        {isLoading && <div className="h-8 w-full mt-2 p-2 mb-8 text-left max-w-md bg-gray-300 dark:bg-gray-600 rounded-lg animate-pulse" />}
-        
+      <div className={cn("max-w-xl max-h-screen overflow-y-hidden flex flex-col")}>
+        <div className={cn("overflow-y-auto col-start-1 row-start-1 ")}>
+          <div
+            className={cn(styles.messages)}
+          >
+            {messages.length === 0 && <div className="font-medium text-xl m-auto text-left w-full">Hey, it&apos;s Descope Assistant. How can I help you today?</div>}
+  
+            {messages.map((msg, index) => (
+              <Message key={index} role={msg.role} text={msg.text} />
+            ))}
+  
+            {isLoading && <div className="h-8 w-full mt-2 p-2 mb-8 text-left max-w-md bg-gray-300 dark:bg-gray-600 rounded-lg animate-pulse" />}
+          </div>
+        </div>
+        <div className="col-start-1 row-start-1 bg-transparent pb-2">
+          <form onSubmit={handleSubmit} className="flex">
+            <input
+              type="text"
+              className={styles.input}
+              value={userInput}
+              onChange={(e) => setUserInput(e.target.value)}
+              placeholder="Enter your question"
+            />
+            <button
+              type="submit"
+              className={styles.button}
+              disabled={inputDisabled}
+            >
+              Send
+            </button>
+          </form>
+        </div>
       </div>
-      <form
-        onSubmit={handleSubmit}
-        className={`${styles.inputForm} ${styles.clearfix}`}
-      >
-        <input
-          type="text"
-          className={styles.input}
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          placeholder="Enter your question"
-        />
-        <button
-          type="submit"
-          className={styles.button}
-          disabled={inputDisabled}
-        >
-          Send
-        </button>
-      </form>
-    </div>
   );
+  
 };
 
 export default Chat;
+
+
+
+const sampleMessages = [
+  { role: "user", text: "Hello!" },
+  { role: "assistant", text: "Hi there!" },
+  { role: "user", text: "How are you?" },
+  { role: "assistant", text: "I'm doing well. Thanks for asking!" },
+  { role: "user", text: "What's your name?" },
+  { role: "assistant", text: "My name is Descope. Nice to meet you!" },
+  { role: "user", text: "What's your favorite color?" },
+  { role: "assistant", text: "I don't have a favorite color. I'm a bot!" },
+  { role: "assistant", text: "Hi there!" },
+  { role: "user", text: "How are you?" },
+  { role: "assistant", text: "I'm doing well. Thanks for asking!" },
+  { role: "user", text: "What's your name?" },
+  { role: "assistant", text: "My name is Descope. Nice to meet you!" },
+  { role: "user", text: "What's your favorite color?" },
+  { role: "assistant", text: "I don't have a favorite color. I'm a bot!" },
+  { role: "assistant", text: "Hi there!" },
+  { role: "user", text: "How are you?" },
+  { role: "assistant", text: "I'm doing well. Thanks for asking!" },
+  { role: "user", text: "What's your name?" },
+  { role: "assistant", text: "My name is Descope. Nice to meet you!" },
+  { role: "user", text: "What's your favorite color?" },
+  { role: "assistant", text: "I don't have a favorite color. I'm a bot!" },
+  { role: "assistant", text: "Hi there!" },
+  { role: "user", text: "How are you?" },
+  { role: "assistant", text: "I'm doing well. Thanks for asking!" },
+  { role: "user", text: "What's your name?" },
+  { role: "assistant", text: "My name is Descope. Nice to meet you!" },
+  { role: "user", text: "What's your favorite color?" },
+  { role: "assistant", text: "I don't have a favorite color. I'm a bot!" },
+  { role: "assistant", text: "Hi there!" },
+  { role: "user", text: "How are you?" },
+  { role: "assistant", text: "I'm doing well. Thanks for asking!" },
+  { role: "user", text: "What's your name?" },
+  { role: "assistant", text: "My name is Descope. Nice to meet you!" },
+  { role: "user", text: "What's your favorite color?" },
+  { role: "assistant", text: "I don't have a favorite color. I'm a bot!" },
+
+  { role: "assistant", text: "I'm doing well. Thanks for asking!" },
+  { role: "user", text: "What's your name?" },
+  { role: "assistant", text: "My name is Descope. Nice to meet you!" },
+  { role: "user", text: "What's your favorite color?" },
+  { role: "assistant", text: "I don't have a favorite color. I'm a bot!" },
+  { role: "assistant", text: "Hi there!" },
+  { role: "user", text: "How are you?" },
+  { role: "assistant", text: "I'm doing well. Thanks for asking!" },
+  { role: "user", text: "What's your name?" },
+  { role: "assistant", text: "My name is Descope. Nice to meet you!" },
+  { role: "user", text: "What's your favorite color?" },
+  { role: "assistant", text: "I don't have a favorite color. I'm a bot!" },
+]
