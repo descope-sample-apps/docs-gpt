@@ -21,7 +21,7 @@ const UserMessage = ({ text }: { text: string }) => {
 
 const AssistantMessage = ({ text }: { text: string }) => {
   return (
-    <div className={styles.assistantMessage}>
+    <div className={cn(styles.assistantMessage)}>
       <Markdown>{text}</Markdown>
     </div>
   );
@@ -243,7 +243,7 @@ const Chat = ({
   };
 
   return (
-    <div className={cn("max-w-xl max-h-screen overflow-y-hidden flex flex-col")}>
+    <div className={cn("max-w-3xl max-h-screen overflow-y-hidden flex flex-col")}>
       <div className={cn("overflow-y-auto col-start-1 row-start-1 ")}>
         <div
           className={cn(styles.messages)}
