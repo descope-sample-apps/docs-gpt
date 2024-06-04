@@ -60,12 +60,8 @@
   /* align-self: flex-start; */
   border-radius: 15px;
   max-width: 80%;
-
-  white-space: pre-wrap;
-  word-wrap: break-all;
-  overflow-wrap: break-word;
-
 }
+
 .assistantMessage code {
   white-space: pre-wrap;
   word-wrap: break-all;
