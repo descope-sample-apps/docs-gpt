@@ -34,7 +34,7 @@
     "@types/axios": "^0.14.0",
     "@types/cheerio": "^1.0.0",
     "@types/ms": "^2.0.0",
-    "@types/node": "^24.0.0",
+    "@types/node": "^26.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@types/uuid": "^11.0.0",
